@@ -1,0 +1,58 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:BasicMvvmSample.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:CompileBindings="True"
+        x:DataType="vm:MainWindowViewModel"
+        x:Class="BasicMvvmSample.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="BasicMvvmSample">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+    <TabControl>
+        <TabItem Header="Simple ViewModel">
+            <StackPanel DataContext="{Binding SimpleViewModel}" Spacing="10">
+                <TextBlock>Enter you name: </TextBlock>
+                <TextBox Text="{Binding Name}" />
+                <TextBox Text="{Binding Greeting, Mode=OneWay}"
+                         IsReadOnly="True"
+                         FontWeight="Bold" />
+            </StackPanel>
+        </TabItem>
+        
+        <TabItem Header="Reactive ViewModel">
+            <StackPanel DataContext="{Binding ReactiveViewModel}" Spacing="10">
+                <TextBlock>Enter you name: </TextBlock>
+                <TextBox Text="{Binding Name}" />
+                <TextBox Text="{Binding Greeting, Mode=OneWay}"
+                         IsReadOnly="True"
+                         FontWeight="Bold" />
+            </StackPanel>
+        </TabItem>
+        <TabItem Header="Personal ViewModel">
+            <StackPanel DataContext="{Binding PersonalViewModel}" Spacing="10">
+                <TextBlock>Enter your name: </TextBlock>
+                <TextBox Text="{Binding Name}" />
+                
+                <TextBlock>Enter your surname: </TextBlock>
+                <TextBox Text="{Binding Surname}" />
+                
+                <TextBlock>Enter your date of birth: </TextBlock>
+                <TextBox Text="{Binding DateOfBirth}" />
+                
+                <TextBox Text="{Binding Greeting, Mode=OneWay}"
+                         IsReadOnly="True"
+                         FontWeight="Bold" />
+            </StackPanel>
+        </TabItem>
+    </TabControl>
+
+
+</Window>
